@@ -1,4 +1,10 @@
-﻿
+8086为16位的 一个寄存器16位2进制  编写汇编都是用16进制表示
+一个内存单元为1个字节
+cs：ip
+ds：bx
+ex：
+ss：sp
+
 r cs/ip/ax
 -1400
 
@@ -9,10 +15,9 @@ u 翻译为汇编
 a 以汇编写进去内存
 e以机器数字改写内存内容
 
-a
-                     mov ax, 1
+a           mov ax, 1
 2000:0003   add ax,ax
-                   debug下: jup  2000:3   专门为cs ip 服务的jmp   jmp 3表示ip=3
+          debug下: jmp  2000:3   专门为cs ip 服务的jmp   jmp 3表示ip=3
 
 d fff0:0  ff           区间查询内存内容             查看生产日期
 
@@ -49,6 +54,13 @@ SS:SP 栈顶的段地址  栈顶的偏移地址 例如 1000f   1000是段 f是�
 push ax 把ax的内容入栈                        (sp=sp-2:将ax内容送入ss:sp指向的内存单元,sp指向新的栈顶)
 pop ax  把栈顶的一个字弹出到ax寄存器(先弹出复制到ax(原内容依然在原栈顶);sp=sp+2)
     高地址放高8位 低地址放低8位  栈底是最大地址
+
+栈的表示：
+栈顶  底地址      #ss：sp 指向
+x
+x
+栈底   高地址
+
 
 10000<--sp栈顶
 10001
@@ -146,7 +158,7 @@ mov ax,2000h
 mov ds,ax
 mov bx,1000h
 mov ax,[bx]
-inc bx                        //表示+1
+inc bx  //表示+1
 inc bx
 mov [bx], ax
 inc bx
